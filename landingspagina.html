@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌙 De Stem van de Dag</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
+            color: #e8d5a3;
+            font-family: Georgia, serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.8);
+            border: 2px solid #ffd700;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.1);
+        }
+        
+        h1 {
+            color: #ffd700;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #cd7f32;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .intro {
+            text-align: center;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        label {
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        input {
+            padding: 12px;
+            background: rgba(10, 10, 26, 0.6);
+            border: 1px solid #cd7f32;
+            border-radius: 4px;
+            color: #e8d5a3;
+            font-family: Georgia, serif;
+            font-size: 16px;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #ffd700;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #ffd700 0%, #cd7f32 100%);
+            color: #0a0a1a;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 4px;
+            font-family: Georgia, serif;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(255, 215, 0, 0.3);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #8a7a5a;
+            font-size: 14px;
+        }
+        
+        .sierrand {
+            text-align: center;
+            color: #8a7a5a;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sierrand">✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦</div>
+        
+        <h1>🌙 De Stem van de Dag</h1>
+        <p class="subtitle">Het weerbericht van je ziel</p>
+        
+        <p class="intro">
+            Voel je de wrijving tussen wie je bent en wat de wereld van je vraagt?<br><br>
+            
+            <strong>Dit is jouw dagelijkse spiegel.</strong><br>
+            Geen voorspellingen. Geen oordelen.<br>
+            Alleen herkenning.
+        </p>
+        
+        <form id="aanvraagForm">
+            <div>
+                <label for="naam">Je voornaam</label>
+                <input type="text" id="naam" name="naam" required 
+                       placeholder="bijv. Gerard">
+            </div>
+            
+            <div>
+                <label for="geboortedatum">Je geboortedatum</label>
+                <input type="date" id="geboortedatum" name="geboortedatum" required>
+            </div>
+            
+            <div>
+                <label for="geboortetijd">Je geboortetijd (bij benadering)</label>
+                <input type="time" id="geboortetijd" name="geboortetijd" required>
+            </div>
+            
+            <div>
+                <label for="geboorteplaats">Je geboorteplaats</label>
+                <input type="text" id="geboorteplaats" name="geboorteplaats" required 
+                       placeholder="bijv. Waalwijk">
+            </div>
+            
+            <div>
+                <label for="email">Je email (voor het rapport)</label>
+                <input type="email" id="email" name="email" required 
+                       placeholder="naam@voorbeeld.nl">
+            </div>
+            
+            <button type="submit">✨ Ontvang mijn Stem van de Dag</button>
+        </form>
+        
+        <div class="footer">
+            Gratis. Geen spam. Alleen jouw rapport.<br>
+            <small>Klaar voor meer? De Stem van de Ziel (€15) onthult waarom je voelt wat je voelt.</small>
+        </div>
+        
+        <div class="sierrand">✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦</div>
+    </div>
+    
+    <script>
+        document.getElementById('aanvraagForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const naam = document.getElementById('naam').value;
+            const datum = document.getElementById('geboortedatum').value;
+            const tijd = document.getElementById('geboortetijd').value;
+            const plaats = document.getElementById('geboorteplaats').value;
+            const email = document.getElementById('email').value;
+            
+            // Mailto link met de data
+            const subject = encodeURIComponent('🌙 Aanvraag Stem van de Dag');
+            const body = encodeURIComponent(
+                `Naam: ${naam}\n` +
+                `Geboortedatum: ${datum}\n` +
+                `Geboortetijd: ${tijd}\n` +
+                `Geboorteplaats: ${plaats}\n` +
+                `Email: ${email}\n\n` +
+                `Graag ontvang ik mijn Stem van de Dag!`
+            );
+            
+            // Pas hieronder je eigen email aan
+            window.location.href = `mailto:sophia1985star@gmail.com?subject=${subject}&body=${body}`;
+            
+            alert('Je email programma wordt geopend. Stuur de email en je ontvangt binnen 24 uur je rapport!');
+        });
+    </script>
+</body>
+</html>
